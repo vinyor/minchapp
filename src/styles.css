@@ -1,0 +1,66 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Figtree', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Fraunces', ui-serif, Georgia, serif;
+
+  --color-ink: #1a2420;
+  --color-ink-muted: #5a6b63;
+  --color-paper: #f2f5f1;
+  --color-surface: #ffffff;
+  --color-line: #d7e0da;
+  --color-sage: #2f6f5e;
+  --color-sage-soft: #d8ebe3;
+  --color-sage-deep: #1f4d41;
+  --color-copper: #b85c38;
+  --color-danger: #b42318;
+}
+
+@layer base {
+  html {
+    @apply h-full antialiased;
+  }
+
+  body {
+    @apply m-0 min-h-full bg-paper font-sans text-ink;
+    background-image:
+      radial-gradient(ellipse 120% 80% at 0% -20%, rgb(216 235 227 / 0.7), transparent 55%),
+      radial-gradient(ellipse 90% 60% at 100% 0%, rgb(184 92 56 / 0.08), transparent 45%);
+  }
+
+  button,
+  a,
+  input,
+  select,
+  textarea {
+    @apply touch-manipulation;
+  }
+}
+
+@layer components {
+  .app-shell {
+    @apply mx-auto flex min-h-dvh w-full max-w-lg flex-col;
+  }
+
+  .btn-primary {
+    @apply inline-flex min-h-12 items-center justify-center rounded-xl bg-sage px-5 text-base font-semibold text-white transition active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .btn-secondary {
+    @apply inline-flex min-h-12 items-center justify-center rounded-xl border border-line bg-surface px-5 text-base font-semibold text-ink transition active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .field {
+    @apply w-full rounded-xl border border-line bg-surface px-4 py-3 text-base text-ink outline-none transition placeholder:text-ink-muted focus:border-sage focus:ring-2 focus:ring-sage-soft;
+  }
+
+  .chip {
+    @apply inline-flex items-center rounded-lg bg-sage-soft px-2.5 py-1 text-xs font-medium text-sage-deep;
+  }
+}
+
+/* Thermomix params highlighted in markdown */
+.recipe-md [data-tm-param],
+.recipe-md .tm-param {
+  @apply mx-0.5 inline-flex items-center rounded-md bg-copper/10 px-1.5 py-0.5 font-semibold text-copper;
+}
